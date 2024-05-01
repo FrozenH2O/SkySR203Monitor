@@ -10,6 +10,7 @@ Decides if the internet is down because it can't access http://www.google.com, s
 
 I run this on a Raspberry Pi, called from the crontab every 6 minutes
 cronttab example:
+
 */6 * * * * python /home/myuser/networkmonitor/networkmonitor.py
 
 In networkmonitor.py change these:
