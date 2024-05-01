@@ -13,14 +13,9 @@ cronttab example:
 */6 * * * * python /home/myuser/networkmonitor/networkmonitor.py
 
 In networkmonitor.py change these:
-# username of the skyhub
 user = 'admin'
-# password of the skyhub - change this
 pwd = 'notmypassword'
-# ip address of the skyhub - change this
 host = '192.168.1.1'
-
-#  shorten it to 10 minutes if you want 3/4 hour suits me because Blink will tell me after 30 minutes and I can unplug the cable and plug back in if I'm home
 iRestartAfterxMins = 45
 
 Please note this could reboot your hub everytime it runs, the hub can take 5 minutes to reboot so if you time it badly it could get stuck rebooting.
