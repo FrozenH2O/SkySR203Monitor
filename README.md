@@ -13,9 +13,13 @@ cronttab example:
 */6 * * * * python /home/myuser/networkmonitor/networkmonitor.py
 
 In networkmonitor.py change these:
+
 user = 'admin'
+
 pwd = 'notmypassword'
+
 host = '192.168.1.1'
+
 iRestartAfterxMins = 45
 
 Please note this could reboot your hub everytime it runs, the hub can take 5 minutes to reboot so if you time it badly it could get stuck rebooting.
