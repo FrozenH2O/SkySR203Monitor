@@ -22,4 +22,6 @@ host = '192.168.1.1'
 
 iRestartAfterxMins = 45
 
+Logs into networkstatus.log, and uses networkstatus.txt to store last status
+
 Please note this could reboot your hub everytime it runs, the hub can take 5 minutes to reboot so if you time it badly it could get stuck rebooting.
