@@ -6,7 +6,7 @@ unplugging the network cable between the ONT and the hub, then reconnecting is t
 The cable disconect / reconnect makes sky dhcpc client (v0.0.1) start again.
 But if I'm not in the house then the internet will stay down, so this script will check the connection and call the Hub reboot function.
 
-Decides if the internet is down because it can't access http://www.google.com, so if Google ever shuts up shop you'll need to change to another reliable domain
+It was using get www.google.com, but the router placed a landing page, so it thought it was accessing www.google.com, so changed to use socket connect to 8.8.8.8
 
 I run this on a Raspberry Pi, called from the crontab every 6 minutes
 cronttab example:
