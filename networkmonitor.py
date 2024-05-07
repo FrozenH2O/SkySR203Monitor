@@ -6,6 +6,7 @@ import time
 import re
 import requests
 from requests.auth import HTTPDigestAuth
+import socket
 
 # username of the skyhub
 user = 'admin'
@@ -20,19 +21,19 @@ iRestartAfterxMins = 45
 bLogOn = True
 fmt = "%Y-%m-%d %H:%M:%S"
 
-def checknetwork():
-    iconnected = 3
-
+def internet(host="8.8.8.8", port=53, timeout=3):
+    """
+    Host: 8.8.8.8 (google-public-dns-a.google.com)
+    OpenPort: 53/tcp
+    Service: domain (DNS/TCP)
+    """
     try:
-        # change from google to gobbledeegoop to test what happens when the internet is down
-        requests.get('http://www.google.com', timeout=5)
-        iconnected = 1
-        print("Connected to the Internet")
-    except requests.exceptions.RequestException as err:
-        iconnected = 0
-        print("No internet connection.")
-    
-    return iconnected
+        socket.setdefaulttimeout(timeout)
+        socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
+        return True
+    except socket.error as ex:
+        print(ex)
+        return False
 
 def restartrouter():
 
@@ -130,12 +131,11 @@ def logthis(stringtolog):
 
 
 # 1. check network
-networkstatus = checknetwork()
-if networkstatus == 0:
+if internet() == False:
     # 2. Network is down
     print ("network is DOWN")
     networkisdown()
-elif networkstatus == 1:
+else:
     print ("network is UP")
     # get last status
     f = open("./networkstatus.txt", "r")
